@@ -5,10 +5,10 @@
 * { box-sizing: border-box; }
 
 :root {
-    --line-height: 1.2rem;
-    --sm-padding: calc(var(--line-height) / 2);
-    --md-padding: calc(var(--line-height));
-    --lg-padding: calc(var(--line-height) * 2);
+    --line-height: 1.2;
+    --sm-padding: calc(var(--line-height) / 2rem);
+    --md-padding: calc(var(--line-height) * 1rem);
+    --lg-padding: calc(var(--line-height) * 2rem);
 }
 
 html {
