@@ -38,7 +38,7 @@ dd {
     margin: 0;
 }
 dd:not(:last-of-type) {
-    margin-bottom: var(--line-height);
+    margin-bottom: var(--md-padding);
 }
 
 p {
@@ -50,7 +50,7 @@ p:not(:first-child) {
 
 a {
     color: unset;
-    text-decoration-thickness: 0.12rem;
+    text-decoration-thickness: 3px;
 }
 a:hover {
     text-decoration: none;
