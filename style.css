@@ -4,29 +4,30 @@
 
 * { box-sizing: border-box; }
 
+:root {
+    --line-height: 1.2rem;
+    --sm-padding: calc(var(--line-height) / 2);
+    --md-padding: calc(var(--line-height));
+    --lg-padding: calc(var(--line-height) * 2);
+}
+
 html {
-    font-size: 24px;
+    font-size: 30px;
     font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 0.05em;
-    line-height: 1.4;
-    color: rgb(30, 165, 0);
+    letter-spacing: 0.04rem;
+    line-height: var(--line-height);
+    -webkit-text-stroke: 0.03rem;
 }
 
 body {
     margin: 0;
     margin: auto;
-    padding: 0.5rem;
 }
 
 h1, h2 {
     font-size: unset;
     font-weight: unset;
     margin: 0;
-    /* margin-bottom: 1.4rem; */
-    display: inline-block;
-    /* text-transform: uppercase; */
-    user-select: none;
-    color: black;
 }
 
 dl {
@@ -36,81 +37,59 @@ dl {
 dd {
     margin: 0;
 }
-
 dd:not(:last-of-type) {
-    margin-bottom: 1.4rem;
+    margin-bottom: var(--line-height);
 }
 
 p {
     margin: 0;
 }
-
 p:not(:first-child) {
     text-indent: 5ch;
 }
 
 a {
     color: unset;
-    text-decoration-thickness: 0.13rem;
+    text-decoration-thickness: 0.12rem;
 }
-
 a:hover {
-    color: black;
+    text-decoration: none;
 }
-
-
 
 /* PROMPT */
 
 .Prompt {
+    padding: var(--lg-padding) var(--md-padding);
+    /* font-family: times, serif; */
+    color: rgb(30, 165, 0);
+    text-align: center;
     counter-increment: prompt;
-    padding: 1.4rem 1.4rem 3.5rem 1.4rem;
-    pointer-events: none;
-    /* color: hsl(0,0%,80%); */
-    /* cursor: default; */
-    transition: color 0.5s 0.2s;
-}
-
-.Prompt-container {
-    pointer-events: all;
-    display: inline-block;
-}
-
-.Prompt.is-active {
-    color: black;
 }
 
 .Prompt-text::before {
     content: counter(prompt);
     display: block;
-    color: black;
 }
 
-/* INFO */
+/* META */
 
-.Info, .Faq, .Footer {
-    padding: 1.4rem;
+.Meta {
+    padding: var(--lg-padding) var(--md-padding);
 }
 
-/* EXPANDABLE */
-
-/* .u-expandableHeader {
+.Meta-header {
+    text-align: center;
     cursor: pointer;
-} */
-
-/* .u-expandableHeader:hover::before {
-    content: '(';
+}
+.Meta-header:hover, .Meta.is-expanded .Meta-header {
+    text-transform: uppercase;
 }
 
-.u-expandableHeader:hover::after {
-    content: ')';
-} */
-
-.u-expandableBody {
+.Meta-body {
     display: none;
 }
 
-.u-expandable.is-expanded .u-expandableBody {
+.Meta.is-expanded .Meta-body {
     display: block;
 }
 
@@ -119,72 +98,59 @@ a:hover {
 main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    grid-auto-rows: minmax(0, auto);
+    grid-auto-flow: row;
 }
 
-.u-expandable.is-expanded {
+.Meta {
+    order: 1;
+    grid-column: 3 / 4;
+}
+.Meta.is-expanded {
     grid-column: 2 / 5;
-    margin-bottom: 3.5rem;
 }
 
-.Info {
-    grid-column: 2 / 3;
+.Meta--header {
     grid-row: 2 / 3;
 }
-
-.Faq {
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
+.Meta--header.is-expanded {
+    grid-row: 2 / 4;
 }
 
-.Footer {
-    grid-column: 2 / 3;
+.Meta--faq {
+    grid-row: 4 / 5;
+}
+.Meta--faq.is-expanded {
+    grid-row: 4 / 9;
+}
+
+.Meta--footer {
     grid-row: 6 / 7;
+}
+.Meta--faq.is-expanded ~ .Meta--footer {
+    grid-row: 9 / 10;
 }
 
 @media screen and (max-width: 1000px) {
 
-    html {
-        font-size: 16px;
+    main {
+        grid-template-columns: repeat(2, 1fr);
     }
-    
-    .u-expandableBody {
+
+    .Meta-body {
         display: block;
     }
 
-    main {
-        grid-template-columns: repeat(3, 1fr);
-        grid-auto-rows: minmax(0, auto);
+    .Meta {
+        padding: var(--md-padding);
+        grid-row: unset !important;
+        grid-column: 1 / 3 !important;
     }
 
     .Prompt {
-        padding: 1.4rem 1.4rem 0 1.4rem;
+        padding: var(--md-padding);
     }
 
-    .u-expandable, .u-expandable.is-expanded {
-        grid-column: 1 / 4;
-        margin-bottom: 0;
-    }
-
-    .Info, .Faq, .Footer {
-        padding: 1.4rem;
-    }
-
-    .Info {
-        grid-column: 1 / 4;
-        grid-row: 1 / 2;
-        margin-bottom: 1.4rem;
-    }
-    
-    .Faq {
-        margin-top: 1.4rem;
-        grid-column: 1 / 4;
-        grid-row: 13 / 14;
-        margin-bottom: 1.4rem;
-    }
-    
-    .Footer {
-        grid-column: 1 / 4;
-        grid-row: 15 / 16;
+    .Meta--header, .Meta--header.is-expanded {
+        order: -1;
     }
 }
