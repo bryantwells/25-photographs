@@ -100,7 +100,7 @@ a:hover {
 main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    grid-auto-rows: 1fr
+    /* grid-auto-rows: 1fr */
 }
 
 .Meta {
