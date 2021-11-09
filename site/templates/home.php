@@ -26,7 +26,7 @@
             <?php $faqs = $site->faqs()->toStructure() ?>
             <?php foreach ($faqs as $faq): ?>
                 <dt><?= $faq->question() ?></dt>
-                <dd><?= $faq->answer() ?></dd>
+                <dd><?= $faq->answer()->kirbytext() ?></dd>
             <?php endforeach ?>
         </dl>
     </section>
