@@ -1,0 +1,33 @@
+title: Site
+icon: 📚
+options:
+  url: false
+  status: false
+  delete: false
+sections:
+  content:
+    type: fields
+    fields:
+      statement:
+        label: Statement
+        type: textarea
+        buttons: [link]
+      faqs:
+        label: FAQs
+        type: structure
+        fields:
+          question:
+            label: Question
+            type: text
+          answer:
+            label: Answer
+            type: textarea
+            buttons: [link]
+      colophon:
+        label: Colophon
+        type: textarea
+        buttons: [link]
+  collections:
+    headline: Collections
+    type: pages
+    templates: collection

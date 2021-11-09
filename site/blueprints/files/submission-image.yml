@@ -1,0 +1,6 @@
+title: Submission Image
+accept: image/jpeg, image/png
+fields:
+  attribution:
+    label: Attribution
+    type: text
