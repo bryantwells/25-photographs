@@ -1,5 +1,0 @@
-Attribution: Firstname Lastname
-
-----
-
-Template: submission-image
