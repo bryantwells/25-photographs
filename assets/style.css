@@ -6,7 +6,7 @@
 
 :root {
     --line-height: 1.2;
-    --sm-padding: calc(var(--line-height) / 2rem);
+    --sm-padding: calc(var(--line-height) * 0.5rem);
     --md-padding: calc(var(--line-height) * 1rem);
     --lg-padding: calc(var(--line-height) * 1.5rem);
 }
@@ -65,17 +65,11 @@ a:hover {
     counter-increment: prompt;
 }
 
-.Prompt-container {
-    position: relative;
-    padding-bottom: 100%;
-}
-
 .Prompt-link {
-    position: absolute;
-    top: 0; left: 0;
-    width: 100%;
-    height: 100%;
     text-decoration: none;
+}
+.Prompt-link:hover {
+    color: black;
 }
 
 /* META */
@@ -108,7 +102,8 @@ a:hover {
 main {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr);
-    /* grid-auto-rows: 1fr */
+    grid-auto-flow: row dense;
+    padding: var(--sm-padding);
 }
 
 .Meta {
@@ -138,6 +133,57 @@ main {
 }
 .Meta--faq.is-expanded ~ .Meta--footer {
     grid-row: 8 / 9;
+}
+
+
+/* SUBMISSION */
+
+.Nav {
+    display: block;
+    padding: var(--md-padding);
+    text-align: center;
+}   
+.Nav-link {
+    text-decoration: none;
+    color: rgb(30, 165, 0);
+}
+
+.Nav-link:hover {
+    color: black;
+}
+
+.Submission {
+    /* background-color: black; */
+    padding: var(--sm-padding);
+    cursor: pointer;
+}
+
+.Submission.is-active {
+    grid-column: 2 / span 3;
+    grid-row-end: span 2;
+}
+
+.Submission-figure {
+    margin: 0;
+    position: relative;
+}
+
+.Submission-image {
+    top: 0; left: 0;
+    width: 100%;
+    height: auto;
+    vertical-align: top;
+    object-fit: contain;
+}
+
+.Submission-caption {
+    /* text-align: center; */
+    padding-top: var(--sm-padding);
+    display: none;
+}
+
+.Submission.is-active .Submission-caption {
+    display: block;
 }
 
 @media screen and (max-width: 1400px) {
@@ -170,23 +216,14 @@ main {
     .Meta--header, .Meta--header.is-expanded {
         order: -1;
     }
+
+    .Submission.is-active {
+        grid-column: 1 / span 2;
+    }
 }
 
-/* SUBMISSION */
-
-.Submission {
-    background-color: black;
-}
-
-.Submission-figure {
-    margin: 0;
-}
-
-.Submission-image {
-    max-width: 100%;
-    vertical-align: top;
-}
-
-.Submission-caption {
-    display: none;
+@media screen and (max-width: 600px) {
+    html {
+        font-size: 18px;
+    }
 }
