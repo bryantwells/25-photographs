@@ -1,6 +1,15 @@
 <?php snippet('header', ['title' => '25 Photographs']) ?>
 <main>
-    <nav class="Nav"><a href="/" class="Nav-link">Back</a></nav>
+    <nav class="Nav Nav--back">
+        <style>
+            .Nav--back .Nav-link::before {
+                content: '0';
+            }
+        </style>
+        <a href="/" class="Nav-link">
+            Home
+        </a>
+    </nav>
     <?php $files = $site->files() ?>
     <?php foreach ($files as $file): ?>
         <article class="Submission<?= ($file->type() == 'video') ? ' is-active' : '' ?>" data-hash="<?= $file->hash() ?>">
