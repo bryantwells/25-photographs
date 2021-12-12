@@ -1,0 +1,11 @@
+title: Collection
+
+sections:
+  submissions:
+    headline: Submissions
+    type: files
+    template: submission-image
+    layout: cards
+    size: tiny
+    cover: true
+    text: "{{ file.attribution }}"
