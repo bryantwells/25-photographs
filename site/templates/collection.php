@@ -1,6 +1,13 @@
-<?php snippet('header') ?>
+<?php snippet('header', ['title' => $page->num().' '.$page->title()]) ?>
 <main>
-    <nav class="Nav"><a href="/" class="Nav-link">Back</a></nav>
+    <?php foreach ($page->prevAll() as $page): ?>
+        <nav class="Nav">
+            <a href="<?= $page->url() ?>" class="Nav-link">
+                <?= $page->num() ?>
+                <br><?= $page->title() ?>
+            </a>
+        </nav>
+    <?php endforeach; ?>
     <?php $submissions = $page->files() ?>
     <?php foreach ($submissions as $submission): ?>
         <article class="Submission" data-hash="<?= $submission->hash() ?>">
@@ -20,5 +27,13 @@
                 </figure>
         </article>
     <?php endforeach ?>
+    <?php foreach ($page->nextAll() as $page): ?>
+        <nav class="Nav">
+            <a href="<?= $page->url() ?>" class="Nav-link">
+                <?= $page->num() ?>
+                <br><?= $page->title() ?>
+            </a>
+        </nav>
+    <?php endforeach; ?>
 </main>
 <?php snippet('footer') ?>
