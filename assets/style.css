@@ -142,7 +142,7 @@ main {
     display: block;
     padding: var(--md-padding);
     text-align: center;
-}  
+} 
 .Nav--back {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
@@ -155,6 +155,15 @@ main {
 .Nav-link {
     text-decoration: none;
     color: rgb(30, 165, 0);
+}
+.Nav-link::before {
+    display: block;
+}
+.Nav--back .Nav-link:hover::before {
+    content: 'BACK'
+}
+.Nav--next .Nav-link:hover::before {
+    content: 'NEXT'
 }
 
 .Nav-link:hover {

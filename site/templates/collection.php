@@ -1,13 +1,27 @@
 <?php snippet('header', ['title' => $page->num().' '.$page->title()]) ?>
 <main>
-    <?php foreach ($page->prevAll() as $page): ?>
-        <nav class="Nav">
-            <a href="<?= $page->url() ?>" class="Nav-link">
-                <?= $page->num() ?>
-                <br><?= $page->title() ?>
+    <nav class="Nav Nav--back">
+        <style>
+            .Nav--back .Nav-link::before {
+                content: '0';
+            }
+        </style>
+        <a href="/" class="Nav-link">
+            Home
+        </a>
+    </nav>
+    <?php if ($page->next()): ?>
+        <style>
+            .Nav--next .Nav-link::before {
+                content: '<?= $page->next()->num() ?>';
+            }
+        </style>
+        <nav class="Nav Nav--next">
+            <a href="<?= $page->next()->url() ?>" class="Nav-link">
+                <?= $page->next()->title() ?>
             </a>
         </nav>
-    <?php endforeach; ?>
+    <?php endif; ?>
     <?php $submissions = $page->files() ?>
     <?php foreach ($submissions as $submission): ?>
         <article class="Submission" data-hash="<?= $submission->hash() ?>">
@@ -27,13 +41,5 @@
                 </figure>
         </article>
     <?php endforeach ?>
-    <?php foreach ($page->nextAll() as $page): ?>
-        <nav class="Nav">
-            <a href="<?= $page->url() ?>" class="Nav-link">
-                <?= $page->num() ?>
-                <br><?= $page->title() ?>
-            </a>
-        </nav>
-    <?php endforeach; ?>
 </main>
 <?php snippet('footer') ?>

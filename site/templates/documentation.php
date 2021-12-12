@@ -1,4 +1,4 @@
-<?php snippet('header') ?>
+<?php snippet('header', ['title' => '25 Photographs']) ?>
 <main>
     <nav class="Nav"><a href="/" class="Nav-link">Back</a></nav>
     <?php $files = $site->files() ?>
