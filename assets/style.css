@@ -238,6 +238,16 @@ main {
     .Submission.is-active {
         grid-column: 1 / span 2;
     }
+
+    .Nav--next {
+        grid-column: 2 / 3;
+    } 
+    .Nav--back .Nav-link::before {
+        content: 'BACK' !important;
+    }
+    .Nav--next .Nav-link::before {
+        content: 'NEXT' !important;
+    }
 }
 
 @media screen and (max-width: 600px) {
