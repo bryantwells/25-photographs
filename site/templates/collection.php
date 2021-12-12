@@ -1,6 +1,27 @@
-<?php snippet('header') ?>
+<?php snippet('header', ['title' => $page->num().' '.$page->title()]) ?>
 <main>
-    <nav class="Nav"><a href="/" class="Nav-link">Back</a></nav>
+    <nav class="Nav Nav--back">
+        <style>
+            .Nav--back .Nav-link::before {
+                content: '0';
+            }
+        </style>
+        <a href="/" class="Nav-link">
+            Home
+        </a>
+    </nav>
+    <?php if ($page->next()): ?>
+        <style>
+            .Nav--next .Nav-link::before {
+                content: '<?= $page->next()->num() ?>';
+            }
+        </style>
+        <nav class="Nav Nav--next">
+            <a href="<?= $page->next()->url() ?>" class="Nav-link">
+                <?= $page->next()->title() ?>
+            </a>
+        </nav>
+    <?php endif; ?>
     <?php $submissions = $page->files() ?>
     <?php foreach ($submissions as $submission): ?>
         <article class="Submission" data-hash="<?= $submission->hash() ?>">

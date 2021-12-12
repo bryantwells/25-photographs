@@ -142,10 +142,28 @@ main {
     display: block;
     padding: var(--md-padding);
     text-align: center;
-}   
+} 
+.Nav--back {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+.Nav--next {
+    grid-column: 5 / 6;
+    grid-row: 1 / 2;
+} 
+
 .Nav-link {
     text-decoration: none;
     color: rgb(30, 165, 0);
+}
+.Nav-link::before {
+    display: block;
+}
+.Nav--back .Nav-link:hover::before {
+    content: 'BACK'
+}
+.Nav--next .Nav-link:hover::before {
+    content: 'NEXT'
 }
 
 .Nav-link:hover {
@@ -219,6 +237,16 @@ main {
 
     .Submission.is-active {
         grid-column: 1 / span 2;
+    }
+
+    .Nav--next {
+        grid-column: 2 / 3;
+    } 
+    .Nav--back .Nav-link::before {
+        content: 'BACK' !important;
+    }
+    .Nav--next .Nav-link::before {
+        content: 'NEXT' !important;
     }
 }
 

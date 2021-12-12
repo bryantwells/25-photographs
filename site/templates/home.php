@@ -1,4 +1,4 @@
-<?php snippet('header') ?>
+<?php snippet('header', ['title' => '25 Photographs']) ?>
 <main>
 
     <!-- Info -->
