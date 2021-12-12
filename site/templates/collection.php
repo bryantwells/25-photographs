@@ -1,10 +1,4 @@
 <?php snippet('header') ?>
-<style>
-    .CollectionTitle {
-        grid-column: 1 / 2;
-        grid-row: 1 / 2;
-    }
-</style>
 <main>
     <nav class="Nav"><a href="/" class="Nav-link">Back</a></nav>
     <?php $submissions = $page->files() ?>

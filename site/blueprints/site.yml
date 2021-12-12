@@ -26,7 +26,13 @@ sections:
       colophon:
         label: Colophon
         type: textarea
-        buttons: [link]
+        buttons: [link] 
+      documentation:
+        label: Documentaion
+        type: files
+        layout: cards
+        size: small
+        cover: true
   collections:
     headline: Collections
     type: pages
