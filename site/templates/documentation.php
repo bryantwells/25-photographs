@@ -18,7 +18,7 @@
                     <?php if ($file->type() == 'image'): ?>
                         <img class="Submission-image" srcset="<?= $file->srcset([300, 600, 1200]) ?>" src="<?= $file->resize(600)->url() ?>" title="Photo by <?= $file->attribution() ?>">
                     <?php elseif ($file->type() == 'video'): ?>
-                        <video class="Submission-image" src="<?= $file->url() ?>" autoplay muted></video>
+                        <video class="Submission-image" src="<?= $file->url() ?>" autoplay muted controls></video>
                     <?php endif; ?>
                 </figure>
         </article>
